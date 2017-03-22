@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Test from '../Test';
+import CardContainer from '../CardContainer/CardContainer';
 
 export default class App extends Component {
   render() {
     return (
-      <Test />
+      <div>
+        <CardContainer />
+      </div>
     );
   }
 }
