@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const Card = () => {
-  return (
-    <div>
-      Cat image and quote
-    </div>
-  );
+class Card extends Component {
+  render() {
+    return (
+      <div>
+        Cats and quotes
+      </div>
+    );
+  }
+}
+
+Card.propTypes = {
+
 };
 
 export default Card;
