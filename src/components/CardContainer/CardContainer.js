@@ -7,6 +7,7 @@ const CardContainer = props => {
              url={catAndFact.url}
              fact={catAndFact.fact}
              id={catAndFact.id}
+             deleteCard={props.deleteCard}
              key={catAndFact.id} />;
   });
 
@@ -22,7 +23,8 @@ CardContainer.propTypes = {
     url: React.PropTypes.string,
     fact: React.PropTypes.string,
     id: React.PropTypes.string
-  }))
+  })),
+  deleteCard: React.PropTypes.func
 };
 
 export default CardContainer;

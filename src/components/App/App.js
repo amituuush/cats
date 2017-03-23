@@ -3,17 +3,21 @@ import { connect } from 'react-redux';
 import CardContainer from '../CardContainer/CardContainer';
 import * as actions from '../../actions';
 
+import './app.scss';
+
 class App extends Component {
 
   componentDidMount() {
-    this.props.fetchCats();
+    this.props.fetchCatsAndFacts();
   }
 
   render() {
     return (
-      <div>
+      <div className="app-container">
+        <h1>Cats and Facts</h1>
         <CardContainer
-        catsAndFacts={this.props.catsAndFacts} />
+        catsAndFacts={this.props.catsAndFacts}
+        deleteCard={this.props.deleteCard} />
       </div>
     );
   }

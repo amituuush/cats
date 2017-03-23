@@ -1,0 +1,14 @@
+.card-container {
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+
+  &:hover {
+    cursor: pointer;
+    background: #efefef;
+  }
+
+  img {
+    width: 300px;
+  }
+}

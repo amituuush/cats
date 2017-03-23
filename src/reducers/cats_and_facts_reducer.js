@@ -1,6 +1,7 @@
 import {
   FETCH_CATS,
-  FETCH_FACTS
+  FETCH_FACTS,
+  DELETE_CARD
 } from '../actions/types';
 
 export default function (state = [], action) {
@@ -21,6 +22,10 @@ export default function (state = [], action) {
         newState.push(tempState);
       }
       return newState;
+    case DELETE_CARD:
+      return state.filter((card) => {
+        return card.id !== action.id;
+      });
   }
   return state;
 }
