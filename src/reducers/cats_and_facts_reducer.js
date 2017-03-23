@@ -3,12 +3,24 @@ import {
   FETCH_FACTS
 } from '../actions/types';
 
-export const catsAndFactsReducer = (state = [], action) => {
+export default function (state = [], action) {
   switch(action.type) {
     case FETCH_CATS:
-      return state;
+      return action.cats.map(cat => {
+        return Object.assign({}, {
+          url: cat.url[0],
+          id: cat.id[0],
+        });
+      });
     case FETCH_FACTS:
-      return action.facts;
+      let newState = [];
+      for (var i = 0; i < state.length; i++) {
+        let tempState = Object.assign({}, state[i], {
+          fact: action.facts[i]
+        });
+        newState.push(tempState);
+      }
+      return newState;
   }
   return state;
-};
+}

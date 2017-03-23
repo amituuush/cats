@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CardContainer from '../CardContainer/CardContainer';
+import * as actions from '../../actions';
 
-export default class App extends Component {
+class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchCats();
+  }
+
   render() {
     return (
       <div>
@@ -10,3 +17,11 @@ export default class App extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    catsAndFacts: state.catsAndFacts
+  }
+}
+
+export default connect(mapStateToProps, actions)(App);

@@ -2,12 +2,7 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src'
-  ],
+  entry: './src',
   output: {
     path: './public',
     filename: 'bundle.js',
@@ -19,7 +14,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ['react-hot', 'es2015', 'stage-1']
+        presets: ['react', 'es2015', 'stage-1']
       }
     },
     {
@@ -31,14 +26,12 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
+  node: {
+    fs: 'empty'
+  },
   devServer: {
     historyApiFallback: true,
     contentBase: resolve(__dirname, 'public'),
-    hot: true,
     publicPath: '/'
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
-  ]
 }

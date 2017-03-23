@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import catsAndFactsReducer from './cats_and_facts_reducer';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  catsAndFacts: catsAndFactsReducer
 });
 
 export default rootReducer;

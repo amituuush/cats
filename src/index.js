@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { AppContainer } from 'react-hot-loader';
+import reduxThunk from 'redux-thunk';
+import logger from 'redux-logger';
+import reduxPromise from 'redux-promise';
 import App from './components/App/App';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxThunk, reduxPromise, logger())(createStore);
 
 if (module.hot) {
   module.hot.accept();
