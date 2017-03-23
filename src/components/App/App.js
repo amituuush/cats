@@ -12,7 +12,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <CardContainer />
+        <CardContainer
+        catsAndFacts={this.props.catsAndFacts} />
       </div>
     );
   }

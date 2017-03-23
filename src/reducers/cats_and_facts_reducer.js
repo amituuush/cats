@@ -13,9 +13,9 @@ export default function (state = [], action) {
         });
       });
     case FETCH_FACTS:
-      let newState = [];
-      for (var i = 0; i < state.length; i++) {
-        let tempState = Object.assign({}, state[i], {
+      const newState = [];
+      for (let i = 0; i < state.length; i++) {
+        const tempState = Object.assign({}, state[i], {
           fact: action.facts[i]
         });
         newState.push(tempState);

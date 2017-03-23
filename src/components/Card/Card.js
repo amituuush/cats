@@ -1,17 +1,18 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-class Card extends Component {
-  render() {
+const Card = props => {
     return (
       <div>
-        Cats and quotes
+        <img src={props.url} />
+        <p>{props.fact}</p>
       </div>
     );
-  }
 }
 
 Card.propTypes = {
-
+  url: React.PropTypes.string,
+  fact: React.PropTypes.string,
+  id: React.PropTypes.string
 };
 
 export default Card;
