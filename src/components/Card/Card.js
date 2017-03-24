@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-
+import { WidthProvider } from 'react-grid-layout';
+import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
+var ResponsiveReactGridLayout = require('react-grid-layout').Responsive;
+ResponsiveReactGridLayout = WidthProvider(ResponsiveReactGridLayout);
 import './card.scss';
 
 class Card extends Component {
@@ -20,10 +23,11 @@ class Card extends Component {
 
   render() {
     return (
-      <div key={this.props.key} data-grid={this.props.dataGrid} className="card">
-        <img src={this.props.url} />
-        <p>{this.props.fact}</p>
-      </div>
+        <div key={this.props.id} data-grid={this.props.dataGrid} className="card" ref={(ref) => this.ref = ref}>
+          <i className="fa fa-arrows" aria-hidden="true"></i>
+          <img src={this.props.url} />
+          <p>{this.props.fact}</p>
+        </div>
     );
   }
 }
