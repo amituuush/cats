@@ -13,9 +13,14 @@ class Card extends Component {
     this.props.deleteCard(this.props.id);
   }
 
+  componentWillMount() {
+    // const height = document.getElementsByClassName('card-container').height;
+    // console.log('height', document.getElementsByClassName('card-container')[0].clientHeight);
+  }
+
   render() {
     return (
-      <div onClick={this.handleDeleteCard} className="card-container">
+      <div key={this.props.key} data-grid={this.props.dataGrid} className="card">
         <img src={this.props.url} />
         <p>{this.props.fact}</p>
       </div>

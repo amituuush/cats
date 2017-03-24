@@ -6,9 +6,10 @@ module.exports = {
   output: {
     path: './public',
     filename: 'bundle.js',
-    publicPath: '/'
   },
-  devtool: 'inline-source-map',
+   node: {
+    fs: 'empty'
+  },
   module: {
     loaders: [{
       exclude: /node_modules/,
@@ -28,13 +29,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
-  },
-  node: {
-    fs: 'empty'
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: resolve(__dirname, 'public'),
-    publicPath: '/'
-  },
+  }
 }

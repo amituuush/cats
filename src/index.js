@@ -9,6 +9,8 @@ import reduxPromise from 'redux-promise';
 import App from './components/App/App';
 import reducers from './reducers';
 
+import './style.scss';
+
 const createStoreWithMiddleware = applyMiddleware(reduxThunk, reduxPromise, logger())(createStore);
 
 if (module.hot) {
