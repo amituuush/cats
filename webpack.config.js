@@ -7,7 +7,7 @@ module.exports = {
     path: './public',
     filename: 'bundle.js',
   },
-   node: {
+  node: {
     fs: 'empty'
   },
   module: {

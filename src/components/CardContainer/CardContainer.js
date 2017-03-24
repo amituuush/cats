@@ -22,7 +22,8 @@ class CardContainer extends Component {
     super(props);
 
     this.state = {
-      imageUrl: ''
+      imageUrl: true,
+
     }
 
     this.handleDeleteCard = this.handleDeleteCard.bind(this);
@@ -36,11 +37,13 @@ class CardContainer extends Component {
   }
 
   handleDeleteCard() {
-    console.log('deleting');
+    this.props.deleteCard(this.props.id);
   }
 
   handleImageError() {
-    console.log('error on image');
+    this.setState({
+      imageUrl: true
+    });
   }
 
   // createElement(catAndFact) {
@@ -61,23 +64,24 @@ class CardContainer extends Component {
   // }
 
   render() {
+    const self = this;
     const gridElements = _.map(this.props.catsAndFacts, function(catAndFact) {
       catAndFact.grid.x = Math.floor(Math.random() * 3);
 
       return (
-        <div key={catAndFact.id} data-grid={catAndFact.grid} className="card">
-        <i className="fa fa-times" aria-hidden="true"></i>
-        <i className="fa fa-arrows" aria-hidden="true"></i>
-            <img src={catAndFact.url} />
-            <p>{catAndFact.fact}</p>
-        </div>
+        // <div key={catAndFact.id} data-grid={catAndFact.grid} className={self.state.imageUrl ? "card" : "card-hide"} onClick={self.handleDeleteCard}>
+        //   <i className="fa fa-times" aria-hidden="true"></i>
+        //   <i className="fa fa-arrows" aria-hidden="true"></i>
+        //   <img src={catAndFact.url} onError={self.handleImageError} />
+        //   <p>{catAndFact.fact}</p>
+        // </div>
 
-        // <Card
-        //   key={catAndFact.id}
-        //   id={catAndFact.id}
-        //   dataGrid={catAndFact}
-        //   url={catAndFact.url}
-        //   fact={catAndFact.fact} />
+        <Card
+          key={catAndFact.id}
+          id={catAndFact.id}
+          dataGrid={catAndFact.grid}
+          url={catAndFact.url}
+          fact={catAndFact.fact} />
       );
     })
 
