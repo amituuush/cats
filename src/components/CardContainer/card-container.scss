@@ -6,8 +6,8 @@
   z-index: 9999;
 
   &:active {
-    top: 35px;
-    left: 18px;
+    top: 100px;
+    left: 0px;
   }
 }
 
@@ -50,4 +50,95 @@
     }
   }
 
+}
+
+
+@media only screen and (min-width: 1030px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 2px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1035px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 5px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1060px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 10px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1060px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 15px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 20px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1150px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 25px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 30px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 35px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 40px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1350px) {
+  .react-grid-item {
+     &:active {
+      top: 100px;
+      left: 75px;
+    }
+  }
 }
