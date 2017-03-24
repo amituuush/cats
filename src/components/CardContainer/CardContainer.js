@@ -12,18 +12,13 @@ import './card-container.scss';
 class CardContainer extends Component {
   static defaultProps = {
     className: "layout",
-    cols: {lg: 3, md: 3, sm: 3, xs: 2, xxs: 1},
-    rowHeight: 200
+    cols: {lg: 3, md: 3, sm: 2, xs: 1, xxs: 1},
+    // autosize: true
   }
 
   constructor(props) {
     super(props);
-    this.state = {
-      items: [0, 1, 2, 3, 4].map(function(i, key, list) {
-        return {i: i.toString(), x: i * 2, y: 0, w: 1, h: 1, add: i === (list.length - 1).toString(), hey: 'hey'};
-      }),
-      newCounter: 0
-    };
+
     this.onBreakpointChange = this.onBreakpointChange.bind(this);
     this.onLayoutChange = this.onLayoutChange.bind(this);
     // this.onRemoveItem = this.onRemoveItem.bind(this);
@@ -34,7 +29,7 @@ class CardContainer extends Component {
   //   this.setState({items: _.reject(this.state.items, {i: i})});
   // }
 
-  createElement(el) {
+  createElement(catAndFact) {
     var removeStyle = {
       position: 'absolute',
       right: '2px',
@@ -42,11 +37,15 @@ class CardContainer extends Component {
       cursor: 'pointer'
     };
 
-    var i = el.add ? '+' : el.i;
+    var i = catAndFact.add ? '+' : catAndFact.i;
 
     return (
-      <div key={i} data-grid={el}>
-        {i}
+      <div key={i} data-grid={catAndFact}>
+        <Card
+              url={catAndFact.url}
+              fact={catAndFact.fact}
+              id={catAndFact.id}
+              key={catAndFact.id} />
       </div>
     );
   }
@@ -65,24 +64,11 @@ class CardContainer extends Component {
   }
 
   render() {
-    let cards;
-    if (this.props.catsAndFacts.length === 0) {
-      cards = <p>Loading...</p>;
-    } else {
-    cards = this.props.catsAndFacts.map(catAndFact => {
-      return <Card
-              url={catAndFact.url}
-              fact={catAndFact.fact}
-              id={catAndFact.id}
-              deleteCard={this.props.deleteCard}
-              key={catAndFact.id} />;
-    });
-    }
     return (
       <div>
          <ResponsiveReactGridLayout onLayoutChange={this.onLayoutChange} onBreakpointChange={this.onBreakpointChange}
-              {...this.props}>
-            {_.map(this.state.items, this.createElement)}
+              {...this.props} autosize={true}>
+            {_.map(this.props.catsAndFacts, this.createElement)}
           </ResponsiveReactGridLayout>
       </div>
     );

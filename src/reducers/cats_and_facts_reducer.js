@@ -11,6 +11,11 @@ export default function (state = [], action) {
         return Object.assign({}, {
           url: cat.url[0],
           id: cat.id[0],
+          i: cat.id[0],
+          x: 1,
+          y: 0,
+          w: 1,
+          h: 1
         });
       });
     case FETCH_FACTS:
