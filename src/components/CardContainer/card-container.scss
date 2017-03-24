@@ -1,7 +1,7 @@
 .react-grid-item {
   background: #fff;
   height: auto !important;
-  padding: 1em 0em;
+  padding: 2.5em 0em 1em 0em;
   border-radius: 10px;
   z-index: 9999;
 }
@@ -20,16 +20,18 @@
   }
 
   .fa-arrows {
-    color: #333333;
-    z-index: 99999;
-  }
+    color: #DADADA;
+    position: absolute;
+    top: 15px;
+    left: 15px;
 
-  &:hover {
-    cursor: -webkit-grab;
-  }
+    &:hover {
+      cursor: -webkit-grab;
+    }
 
-  &:active {
-    cursor: -webkit-grabbing;
+    &:active {
+      cursor: -webkit-grabbing;
+    }
   }
 
 }
