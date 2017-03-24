@@ -6,18 +6,29 @@ class Card extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      imageBroken: false
+    }
+
     this.handleDeleteCard = this.handleDeleteCard.bind(this);
+    this.handleImageError = this.handleImageError.bind(this);
   }
 
   handleDeleteCard() {
     this.props.deleteCard(this.props.id);
   }
 
+  handleImageError() {
+    this.setState({
+      imageBroken: true
+    });
+  }
+
   render() {
     return (
-        <div className="card-container">
-          <i className="fa fa-arrows" aria-hidden="true"></i>
-          <img src={this.props.url} />
+        <div className={this.state.imageBroken ? "card-hide" : "card-container"}>
+          <i className="fa fa-times" aria-hidden="true" onClick={this.handleDeleteCard}></i>
+          <img src={this.props.url} onError={this.handleImageError} />
           <p>{this.props.fact}</p>
         </div>
     );

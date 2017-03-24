@@ -23,9 +23,9 @@ class CardContainer extends Component {
         <Card
           key={catAndFact.id}
           id={catAndFact.id}
-          dataGrid={catAndFact.grid}
           url={catAndFact.url}
-          fact={catAndFact.fact} />
+          fact={catAndFact.fact}
+          deleteCard={this.props.deleteCard} />
       );
     })
 
