@@ -33,7 +33,7 @@ class CardContainer extends Component {
 
   createElement(catAndFact) {
     var i = catAndFact.add ? '+' : catAndFact.i;
-    // catAndFact.h = 3;
+    catAndFact.x = Math.floor(Math.random() * 3);
 
     return (
       <div key={i} data-grid={catAndFact} className="card">
