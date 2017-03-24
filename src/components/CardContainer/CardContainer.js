@@ -18,17 +18,16 @@ class CardContainer extends Component {
   constructor(props) {
     super(props);
 
-    // this.onBreakpointChange = this.onBreakpointChange.bind(this);
-    // this.onLayoutChange = this.onLayoutChange.bind(this);
-    // this.onRemoveItem = this.onRemoveItem.bind(this);
+    this.handleDeleteCard = this.handleDeleteCard.bind(this);
   }
 
-  // onRemoveItem(i) {
-  //   console.log('removing', i);
-  //   this.setState({items: _.reject(this.state.items, {i: i})});
-  // }
   componentWillMount() {
     console.log(document.getElementsByClassName('card'));
+    console.log('height', this.props.clientHeight)
+  }
+
+  handleDeleteCard() {
+    console.log('deleting');
   }
 
   createElement(catAndFact) {
@@ -36,11 +35,10 @@ class CardContainer extends Component {
     catAndFact.x = Math.floor(Math.random() * 3);
 
     return (
-      <div key={i} data-grid={catAndFact} className="card">
-      <div className="card-layer">
-        <img src={catAndFact.url} />
-        <p>{catAndFact.fact}</p>
-      </div>
+      <div key={catAndFact.id} data-grid={catAndFact} className="card">
+      <i className="fa fa-arrows fa-2x" aria-hidden="true"></i>
+          <img src={catAndFact.url} />
+          <p>{catAndFact.fact}</p>
       </div>
     );
       //  <Card
@@ -49,9 +47,6 @@ class CardContainer extends Component {
       // url={catAndFact.url}
       // fact={catAndFact.fact} />
   }
-
-
-
 
   render() {
     return (
@@ -63,8 +58,6 @@ class CardContainer extends Component {
     );
   }
 };
-
-
 
 CardContainer.propTypes = {
   catsAndFacts: React.PropTypes.arrayOf(React.PropTypes.shape({

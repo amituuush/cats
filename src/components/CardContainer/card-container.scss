@@ -14,5 +14,22 @@
     z-index: -1;
   }
 
+  p {
+    padding: 0 1em;
+    color: #333333;
+  }
+
+  .fa-arrows {
+    color: #333333;
+    z-index: 99999;
+  }
+
+  &:hover {
+    cursor: -webkit-grab;
+  }
+
+  &:active {
+    cursor: -webkit-grabbing;
+  }
 
 }
