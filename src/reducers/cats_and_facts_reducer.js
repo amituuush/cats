@@ -16,7 +16,7 @@ export default function (state = [], action) {
             x: 1,
             y: 0,
             w: 1,
-            h: 2
+            h: 3
           }
         });
       });

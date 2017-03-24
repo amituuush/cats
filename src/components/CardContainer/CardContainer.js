@@ -66,6 +66,7 @@ class CardContainer extends Component {
 
       return (
         <div key={catAndFact.id} data-grid={catAndFact.grid} className="card">
+        <i className="fa fa-times" aria-hidden="true"></i>
         <i className="fa fa-arrows" aria-hidden="true"></i>
             <img src={catAndFact.url} />
             <p>{catAndFact.fact}</p>

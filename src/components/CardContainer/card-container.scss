@@ -28,7 +28,7 @@
     color: #DADADA;
     position: absolute;
     top: 15px;
-    left: 15px;
+    right: 15px;
 
     &:hover {
       cursor: -webkit-grab;
@@ -36,6 +36,17 @@
 
     &:active {
       cursor: -webkit-grabbing;
+    }
+  }
+
+  .fa-times {
+    color: #D04F3B;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 
