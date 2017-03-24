@@ -3,4 +3,16 @@
   height: auto !important;
   padding: 1em 0em;
   border-radius: 10px;
+  z-index: 9999;
+}
+
+.card {
+
+  img {
+    width: 300px;
+    position: relative;
+    z-index: -1;
+  }
+
+
 }
