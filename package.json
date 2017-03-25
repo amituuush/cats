@@ -9,7 +9,7 @@
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "postinstall": "webpack -p",
-    "build": "webpack -p"
+    "build": "NODE_ENV=production webpack -p"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",
@@ -38,8 +38,7 @@
     "redux-mock-store": "^1.2.2",
     "sass-loader": "^6.0.3",
     "style-loader": "0.13.1",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack": "^1.12.9"
   },
   "dependencies": {
     "axios": "^0.15.3",
