@@ -65,7 +65,7 @@ class CardContainer extends Component {
       <div>
         <form>
         <label>Sort by:</label>
-          <select name="sort" onChange={this.handleSortedChange} value={this.props.sorted || 'default'}>
+          <select name="sort" onChange={this.handleSortedChange} value={this.props.sorted || 'default'} className="sort-select">
             <option value="default">Default</option>
             <option value="fact-length-ascend">Fact Length - Ascending</option>
             <option value="fact-length-descend">Fact Length - Descending</option>
