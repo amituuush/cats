@@ -70,16 +70,17 @@ I was then able to inject this data as props into `<App />` and pass it down to 
 **Grid Layout**: I spent a great deal of time trying to configure my app with a library called [react-grid-layout](https://github.com/STRML/react-grid-layout), which would have given the app "drag-and-drop" functionality. `react-grid-layout` requires state that is an array of objects with the following properties: x-axis, y-axis, width, height. It then maps through this array and creates grid elements by passing these as prop values to a container `<div>`.
 Therefore, since each grid element would have these properties along with an image and url, I decided to merge this data into my `catsAndFacts` piece of state to look like the following:
 
-```{
-      url: string,
-      id: string,
-      grid: {
-        x: number,
-        y: number,
-        w: number,
-        h: number
-      }
-    }
+```
+{
+  url: string,
+  id: string,
+  grid: {
+    x: number,
+    y: number,
+    w: number,
+    h: number
+  }
+}
 ```
 
  The problem was `react-grid-layout` requires a default height (`h`) to be set to all grid elements; however in this app, grid elements have a variable height, as image size and fact length differ for each grid element. I had to figure out some way to find the height of each grid element after the component had rendered, calculate it's height in `react-grid-layout` units, and update each individual grid element's height so it would be re-rendered. One of the problems was I couldn't make each grid element it's own React component which would have allowed me get their height because the app would break. Thus, they needed to all be rendered under one component (`<CardContainer />`). The code looked like this:
