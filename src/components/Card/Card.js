@@ -39,7 +39,7 @@ Card.propTypes = {
   url: React.PropTypes.string,
   fact: React.PropTypes.string,
   id: React.PropTypes.string,
-  deleteCard: React.PropTypes.func
+  deleteCard: React.PropTypes.func,
 };
 
 export default Card;
