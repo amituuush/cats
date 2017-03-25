@@ -86,6 +86,7 @@ Therefore, since each grid element would have these properties along with an ima
 ```
 ...
   createElement(catAndFact) {
+
     return (
       <div key={i} data-grid={catAndFact.grid} className="card">
         <img src={catAndFact.url} />
@@ -95,6 +96,7 @@ Therefore, since each grid element would have these properties along with an ima
   }
 
   render() {
+
     return (
       <div>
          <ResponsiveReactGridLayout {...this.props} autosize={true}>
