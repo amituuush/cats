@@ -1,11 +1,12 @@
+var path = require('path');
 const { resolve } = require('path');
 const webpack = require('webpack');
 
 module.exports = {
   entry: './src',
   output: {
-    path: './public',
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js'
   },
   node: {
     fs: 'empty'
