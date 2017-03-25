@@ -79,12 +79,12 @@ Therefore, since each grid element would have these properties along with an ima
         w: number,
         h: number
       }
-    }```
+    }
+```
 
  The problem was `react-grid-layout` requires a default height (`h`) to be set to all grid elements; however in this app, grid elements have a variable height, as image size and fact length differ for each grid element. I had to figure out some way to find the height of each grid element after the component had rendered, calculate it's height in `react-grid-layout` units, and update each individual grid element's height so it would be re-rendered. One of the problems was I couldn't make each grid element it's own React component which would have allowed me get their height because the app would break. Thus, they needed to all be rendered under one component (`<CardContainer />`). The code looked like this:
 
 ```
-...
   createElement(catAndFact) {
 
     return (
@@ -105,7 +105,6 @@ Therefore, since each grid element would have these properties along with an ima
       </div>
     );
   }
-  ...
 ```
 
 So I tried retrieving each grid element's height out of the DOM after the component render process. But even once this is complete, there is no way to edit the height of the grid element `<div className="card">` before returning the grid element.
