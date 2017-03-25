@@ -16,8 +16,10 @@ class App extends Component {
       <div className="app-container">
         <h1>Cats and Facts</h1>
         <CardContainer
-        catsAndFacts={this.props.catsAndFacts}
-        deleteCard={this.props.deleteCard} />
+          catsAndFacts={this.props.catsAndFacts}
+          deleteCard={this.props.deleteCard}
+          sorted={this.props.sorted}
+          sortCards={this.props.sortCards} />
       </div>
     );
   }
@@ -25,7 +27,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    catsAndFacts: state.catsAndFacts
+    catsAndFacts: state.catsAndFacts,
+    sorted: state.sorted
   }
 }
 

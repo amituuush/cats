@@ -4,7 +4,8 @@ import { parseString } from 'xml2js';
 import {
   FETCH_CATS,
   FETCH_FACTS,
-  DELETE_CARD
+  DELETE_CARD,
+  SORT_CARDS
 } from './types';
 
 export const fetchCatsSuccess = (res) => {
@@ -63,5 +64,12 @@ export const deleteCard = (id) => {
   return {
     type: DELETE_CARD,
     id: id
+  }
+}
+
+export const sortCards = (sort) => {
+  return {
+    type: SORT_CARDS,
+    sort: sort
   }
 }
