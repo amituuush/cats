@@ -24,7 +24,48 @@ Use the command `npm test` to run the test suite. Due to a time constraint, I wa
 
 **Merging data**: I was given 2 api endpoints: one that returned xml data of image URL's and id's, and one that returned json data of facts about cats. Since each image had to be associated with a fact, I knew I would have to merge the data in some way and I knew that I wanted to have an array of something. After parsing the data, I wanted to create a data structure that was an object, with image URL, id, and cat fact as properties on the object. These would each represent a grid element or "card". I would have an array of these objects, of which I could map through them and create `<Card />` components for each.
 
-My first challenge came with parsing the xml data, in which I used a library called `xml2js`.
+To convert the xml data to json, I used a library called `xml2js`. I then needed to chain asyncronous action creators to send a request for the facts once I received a response for the image URL and id. The code for that looks like this:
+
+```
+export const fetchCatsAndFacts = () => {
+  return dispatch => {
+    // send request for image url and id
+    return dispatch(fetchCats())
+      .then(res => {
+        // once response is received, send request for facts
+        dispatch(fetchFacts());
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    };
+};
+```
+Once the action for image URL and id (fetchCats()) was dispatched, I parsed through the json and created an object for each set of image URL and id's using `Object.assign` to ensure I wasn't mutating state. Then once the action for the fact was dispatched, I parsed through the json and appended a fact onto each object of image URL and id, so the object contained all three as properties. The code for this reducer looks like this:
+
+```
+...
+export default function (state = [], action) {
+  switch(action.type) {
+    case FETCH_CATS:
+      return action.cats.map(cat => {
+        return Object.assign({}, {
+          url: cat.url[0],
+          id: cat.id[0],
+        });
+      });
+    case FETCH_FACTS:
+      const newState = [];
+      for (let i = 0; i < state.length; i++) {
+        const tempState = Object.assign({}, state[i], {
+          fact: action.facts[i]
+        });
+        newState.push(tempState);
+      }
+      return newState;
+...
+```
+I was then able to inject this data as props into `<App />` and pass it down to `<CardContainer />` and ultimately, `<Card />`.
 
 **Grid Layout**: I spent a great deal of time trying to configure my app with a library called [react-grid-layout](https://github.com/STRML/react-grid-layout), which would have given the app "drag-and-drop" functionality. `react-grid-layout` requires state that is an array of objects with the following properties: x-axis, y-axis, width, height. It then maps through this array and creates grid elements by passing these as prop values to a container `<div>`.
 Therefore, since each grid element would have these properties along with an image and url, I decided to merge this data into my `catsAndFacts` piece of state to look like the following:
@@ -40,20 +81,15 @@ Therefore, since each grid element would have these properties along with an ima
       }
     }```
 
- The problem was `react-grid-layout` requires a default height (`h`) to be set to all grid elements; however in this app, grid elements have a variable height, as image size and fact length differ for each grid element. I had to figure out some way to find the height of each grid element after the component had rendered, calculate it's height in `react-grid-layout` units, and update each individual grid element's height so it would be re-rendered. One of the problems was I couldn't make each grid element it's own React component which would have allowed me get this information because the app would break. Thus, they needed to all be rendered under one component (`<CardContainer />`). The code looked like this:
+ The problem was `react-grid-layout` requires a default height (`h`) to be set to all grid elements; however in this app, grid elements have a variable height, as image size and fact length differ for each grid element. I had to figure out some way to find the height of each grid element after the component had rendered, calculate it's height in `react-grid-layout` units, and update each individual grid element's height so it would be re-rendered. One of the problems was I couldn't make each grid element it's own React component which would have allowed me get their height because the app would break. Thus, they needed to all be rendered under one component (`<CardContainer />`). The code looked like this:
 
 ```
 ...
-createElement(catAndFact) {
-
-    // get grid element height after render, and update height here before it's passed into `data-grid` prop
-
+  createElement(catAndFact) {
     return (
       <div key={i} data-grid={catAndFact.grid} className="card">
-      <div className="card-layer">
         <img src={catAndFact.url} />
         <p>{catAndFact.fact}</p>
-      </div>
       </div>
     );
   }
@@ -70,7 +106,9 @@ createElement(catAndFact) {
   ...
 ```
 
-So I tried retrieving each grid element's height out of the DOM during the component render process. But that height information isn't available until after the render is complete. And there is no way to dynamically set the height of each grid element since they're
+So I tried retrieving each grid element's height out of the DOM after the component render process. But even once this is complete, there is no way to edit the height of the grid element `<div className="card">` before returning the grid element.
+
+Therefore, I resorted back to a static column-style responsive layout.
 
 **Testing**: Again, due to a time constraint, I didn't get to test everything I would in a production level app.
 
