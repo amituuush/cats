@@ -1,6 +1,6 @@
 # Cat Application
 * Frontend built using React as a View layer, Redux for state management, and SASS as a css-preprocessor
-* Mocha and Enzyme for unit testing
+* Mocha and Expect for unit testing
 * Axios as a http library
 * Redux-thunk to handle async action creators in Redux
 * Project time: ~15 hours
