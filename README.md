@@ -14,7 +14,7 @@ This repo uses yarn as a package manager. [Yarn can be installed using homebrew.
 4. Navigate to [http://localhost:8080/](http://localhost:8080/)
 
 ## Testing
-Use the command `npm test` to run the test suite. Due to a time constraint, I was not able to create as many tests as I would have liked. Ideally, I would have tested that cards rendering, async action creators, and more.
+Use the command `npm test` to run the test suite. Due to a time constraint, I was not able to create as many tests as I would have liked. Ideally, I would have tested that cards are rendering, async action creators, and more.
 
 ## Other Considerations and Possible Improvements
 
