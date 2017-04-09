@@ -11,12 +11,10 @@ class CardContainer extends Component {
   }
 
   handleSortedChange(e) {
-    console.log(e.target.value);
     this.props.sortCards(e.target.value);
   }
 
   render() {
-
     let cards;
     if (this.props.sorted === 'default') {
       cards = this.props.catsAndFacts.map(catAndFact => {
@@ -33,7 +31,6 @@ class CardContainer extends Component {
       let sortedCards = this.props.catsAndFacts.sort((a, b) => {
         return a.fact.length - b.fact.length;
       });
-      console.log(sortedCards);
        cards = sortedCards.map(catAndFact => {
         return (
           <Card
@@ -48,7 +45,6 @@ class CardContainer extends Component {
       let sortedCards = this.props.catsAndFacts.sort((a, b) => {
         return b.fact.length - a.fact.length;
       });
-      console.log(sortedCards);
        cards = sortedCards.map(catAndFact => {
         return (
           <Card

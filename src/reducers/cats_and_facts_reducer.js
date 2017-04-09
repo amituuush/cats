@@ -15,12 +15,20 @@ export default function (state = [], action) {
       });
     case FETCH_FACTS:
       const newState = [];
+
       for (let i = 0; i < state.length; i++) {
         const tempState = Object.assign({}, state[i], {
           fact: action.facts[i]
         });
         newState.push(tempState);
       }
+
+      // state.forEach(function(state) {
+      //   newState.push(Object.assign({}, state, {
+      //     fact: action.facts[i]
+      //   }))
+      // })
+
       return newState;
     case DELETE_CARD:
       return state.filter((card) => {
