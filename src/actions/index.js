@@ -20,6 +20,7 @@ export const fetchCats = () => {
     return axios.get('http://mapd-cats.azurewebsites.net/catpics')
       .then(res => {
         parseString(res.data, (err, result) => {
+          console.log('result', result);
           return dispatch(fetchCatsSuccess(result.response.data[0].images[0].image));
         });
       })
