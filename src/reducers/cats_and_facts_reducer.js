@@ -22,14 +22,11 @@ export default function (state = [], action) {
         });
         newState.push(tempState);
       }
-
-      // state.forEach(function(state) {
-      //   newState.push(Object.assign({}, state, {
-      //     fact: action.facts[i]
-      //   }))
-      // })
-
       return newState;
+
+      // return state.map((item, index) => {
+      //   return Object.assign({}, item, { fact: action.facts[index] });
+      // });
     case DELETE_CARD:
       return state.filter((card) => {
         return card.id !== action.id;
