@@ -69,6 +69,7 @@ export const deleteCard = (id) => {
 }
 
 export const sortCards = (sort) => {
+  console.log(sort);
   return {
     type: SORT_CARDS,
     sort: sort

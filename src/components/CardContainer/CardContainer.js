@@ -55,6 +55,22 @@ class CardContainer extends Component {
             deleteCard={this.props.deleteCard} />
         );
       });
+    } else if (this.props.sorted === 'alphabetical') {
+      let sortedCards = this.props.catsAndFacts.sort((a, b) => {
+        if(a.fact < b.fact){ return -1; }
+        else if(a.fact > b.fact) {return 1; }
+        return 0;
+      });
+      cards = sortedCards.map(catAndFact => {
+        return (
+          <Card
+            key={catAndFact.id}
+            id={catAndFact.id}
+            url={catAndFact.url}
+            fact={catAndFact.fact}
+            deleteCard={this.props.deleteCard} />
+        );
+      })
     }
 
     return (
@@ -65,6 +81,7 @@ class CardContainer extends Component {
             <option value="default">Default</option>
             <option value="fact-length-ascend">Fact Length - Ascending</option>
             <option value="fact-length-descend">Fact Length - Descending</option>
+            <option value="alphabetical">Alphabetical</option>
           </select>
           <br />
         </form>
