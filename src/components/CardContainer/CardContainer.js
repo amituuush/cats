@@ -24,7 +24,8 @@ class CardContainer extends Component {
           id={catAndFact.id}
           url={catAndFact.url}
           fact={catAndFact.fact}
-          deleteCard={this.props.deleteCard} />
+          deleteCard={this.props.deleteCard}
+          userInput={this.props.userInput} />
       );
       });
     } else if (this.props.sorted === 'fact-length-ascend') {
@@ -38,7 +39,8 @@ class CardContainer extends Component {
             id={catAndFact.id}
             url={catAndFact.url}
             fact={catAndFact.fact}
-            deleteCard={this.props.deleteCard} />
+            deleteCard={this.props.deleteCard}
+            userInput={this.props.userInput} />
         );
       });
     } else if (this.props.sorted === 'fact-length-descend') {
@@ -52,7 +54,8 @@ class CardContainer extends Component {
             id={catAndFact.id}
             url={catAndFact.url}
             fact={catAndFact.fact}
-            deleteCard={this.props.deleteCard} />
+            deleteCard={this.props.deleteCard}
+            userInput={this.props.userInput} />
         );
       });
     } else if (this.props.sorted === 'alphabetical') {
@@ -68,7 +71,8 @@ class CardContainer extends Component {
             id={catAndFact.id}
             url={catAndFact.url}
             fact={catAndFact.fact}
-            deleteCard={this.props.deleteCard} />
+            deleteCard={this.props.deleteCard}
+            userInput={this.props.userInput} />
         );
       })
     }
@@ -101,7 +105,8 @@ CardContainer.propTypes = {
   })),
   sorted: React.PropTypes.string,
   deleteCard: React.PropTypes.func,
-  sortCards: React.PropTypes.func
+  sortCards: React.PropTypes.func,
+  userInput: React.PropTypes.func
 };
 
 export default CardContainer;

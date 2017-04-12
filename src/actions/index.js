@@ -5,7 +5,8 @@ import {
   FETCH_CATS,
   FETCH_FACTS,
   DELETE_CARD,
-  SORT_CARDS
+  SORT_CARDS,
+  USER_INPUT
 } from './types';
 
 export const fetchCatsSuccess = (res) => {
@@ -73,5 +74,13 @@ export const sortCards = (sort) => {
   return {
     type: SORT_CARDS,
     sort: sort
+  }
+}
+
+export const userInput = (input, id) => {
+  return {
+    type: USER_INPUT,
+    input: input,
+    id: id
   }
 }

@@ -19,7 +19,8 @@ class App extends Component {
           catsAndFacts={this.props.catsAndFacts}
           deleteCard={this.props.deleteCard}
           sorted={this.props.sorted}
-          sortCards={this.props.sortCards} />
+          sortCards={this.props.sortCards}
+          userInput={this.props.userInput} />
       </div>
     );
   }

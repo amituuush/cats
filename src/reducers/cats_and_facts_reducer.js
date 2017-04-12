@@ -1,7 +1,8 @@
 import {
   FETCH_CATS,
   FETCH_FACTS,
-  DELETE_CARD
+  DELETE_CARD,
+  USER_INPUT
 } from '../actions/types';
 
 export default function (state = [], action) {
@@ -31,6 +32,15 @@ export default function (state = [], action) {
       return state.filter((card) => {
         return card.id !== action.id;
       });
+    case USER_INPUT:
+      return state.map(catAndFact => {
+        if (catAndFact.id === action.id) {
+          catAndFact.fact = action.input;
+          return catAndFact;
+        } else {
+          return catAndFact;
+        }
+      })
   }
   return state;
 }
